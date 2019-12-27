@@ -1,5 +1,6 @@
 body{
-    background-color: #dedede;
+    background-color: #222222;
+    color: #FEFEFE;
     font-family: Open sans, arial, Helvetica, sans-serif;
     font-size: 14px;
 }
@@ -7,6 +8,10 @@ body{
 .wrapper {
     max-width: 1020px;
     margin: 0 auto;
+}
+
+.nav ul {
+    list-style: none;
 }
 
 form {
