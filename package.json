@@ -16,7 +16,7 @@
     "watch:images": "onchange \"src/images/**/*\" -- npm run copy:images",
     "watch:sass": "sass --no-source-map --watch src/sass/styles.scss public/css/styles.css",
     "watch": "npm-run-all --parallel watch:*",
-    "serve": "browser-sync start --server public --files public",
+    "serve": "browser-sync start --server ./ --files ./",
     "start": "npm-run-all copy --parallel watch serve",
     "build": "npm-run-all copy:html build:* clean postbuild",
     "clean": "rimraf public/scripts",

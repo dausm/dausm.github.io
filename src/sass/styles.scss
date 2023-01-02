@@ -14,7 +14,8 @@ body {
 }
 
 // base styles for hover/focus effect
-.text-link, .btn {
+.text-link,
+.btn {
   position: relative;
   z-index: 2;
   transition-property: color;
@@ -49,7 +50,7 @@ body {
 .text-link {
   color: $dark;
   font-weight: 600;
-  padding: .25rem .5rem;
+  padding: 0.25rem 0.5rem;
 
   &:before {
     background: $dark;
@@ -96,9 +97,12 @@ body {
   overflow: hidden;
 }
 
+.menu-content {
+  display: none;
+}
+
 .menu {
   position: fixed;
-  display: none;
   width: 300px;
   height: 100vh;
   padding: 20px 50px;
@@ -118,6 +122,8 @@ body {
 
 .active + .menu {
   transform: translate(-100%, 0);
-  display: flex;
-  flex-direction: column;
+  & .menu-content {
+    display: flex;
+    flex-direction: column;
+  }
 }
