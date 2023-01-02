@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+@import './variables';
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800);
+
+.text-primary {
+    color: $primary;
+}
+
+.text-secondary {
+    color: $secondary
+}
+
+.text-dark {
+    color: $dark;
+}
+
+.text-light {
+    color: $light;
+}
+
+.bg-dark {
+    background-color: $dark;
+}
+
+.bg-light {
+    background-color: $light;
+}

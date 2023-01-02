@@ -1,0 +1,123 @@
+@import "./base/portfolio-tailwind";
+@import "./base/base";
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background-color: $dark;
+  color: $light;
+  line-height: 1.45;
+}
+
+.headline {
+  font-size: clamp(1.75rem, 6vw, 6rem);
+  font-weight: 700;
+}
+
+// base styles for hover/focus effect
+.text-link, .btn {
+  position: relative;
+  z-index: 2;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+
+  &:before {
+    content: "";
+    position: absolute;
+    border-radius: 4px;
+    z-index: -1;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    transform: scaleX(0);
+    transform-origin: 50% 100%;
+    transition-property: transform;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-out;
+  }
+
+  &:hover,
+  &:focus {
+    &:before {
+      transform: scaleX(1);
+      transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+    }
+  }
+}
+
+.text-link {
+  color: $dark;
+  font-weight: 600;
+  padding: .25rem .5rem;
+
+  &:before {
+    background: $dark;
+  }
+
+  &:hover,
+  &:focus {
+    color: $secondary;
+  }
+}
+
+.btn {
+  display: inline-block;
+  border: 2px solid $light;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  color: $light;
+  padding: 0 1rem;
+
+  &:before {
+    z-index: -1;
+    left: -1px;
+    right: -1px;
+    top: -1px;
+    bottom: -1px;
+    background: $secondary;
+  }
+  &:hover,
+  &:focus {
+    color: $dark;
+    border-color: $secondary;
+  }
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+}
+
+.navigation {
+  position: relative;
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  display: none;
+  width: 300px;
+  height: 100vh;
+  padding: 20px 50px;
+  background: $light;
+  color: $dark;
+  border-left: $dark 3px solid;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: none;
+  transition: transform 0.5s cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  left: calc(100% + 2rem);
+  top: 0;
+  z-index: 10;
+}
+
+.active + .menu {
+  transform: translate(-100%, 0);
+  display: flex;
+  flex-direction: column;
+}

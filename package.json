@@ -1,0 +1,51 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "description": "My portfolio site",
+  "main": "index.html",
+  "author": "dausm",
+  "scripts": {
+    "build:sass": "sass --no-source-map src/sass/styles.scss public/css/styles.css",
+    "copy:html": "copyfiles -u 1 ./src/*.html ./",
+    "copy:js": "copyfiles -u 1 ./src/scripts/*.js public",
+    "copy:images": "copyfiles -u 1 ./src/images/**/* public",
+    "copy": "npm-run-all --parallel copy:*",
+    "watch:html": "onchange \"src/*.html\" -- npm run copy:html",
+    "watch:js": "onchange \"src/scripts/*.js\" -- npm run copy:js",
+    "watch:js-uglyfy": "uglifyjs-folder src/scripts -eo public/scripts",
+    "watch:images": "onchange \"src/images/**/*\" -- npm run copy:images",
+    "watch:sass": "sass --no-source-map --watch src/sass/styles.scss public/css/styles.css",
+    "watch": "npm-run-all --parallel watch:*",
+    "serve": "browser-sync start --server public --files public",
+    "start": "npm-run-all copy --parallel watch serve",
+    "build": "npm-run-all copy:html build:* clean postbuild",
+    "clean": "rimraf public/scripts",
+    "postbuild:js": "uglifyjs-folder src/scripts -eo public/scripts",
+    "postbuild:css": "postcss public/css/styles.css -o public/css/styles.css",
+    "postbuild": "npm-run-all --parallel postbuild:*"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "browser-sync": "^2.27.7",
+    "copyfiles": "^2.4.1",
+    "cssnano": "^5.1.14",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "postcss-cli": "^9.1.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.8",
+    "tailwindcss": "^3.2.4",
+    "uglifyjs-folder": "^3.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dausm/dausm.github.io.git"
+  },
+  "browserslist": [
+    "> 0.25%",
+    "not IE 11"
+  ],
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
+}
